@@ -25,13 +25,12 @@ const formAddName = document.querySelector('#formAddName');
 const formAddUrl = document.querySelector('#formAddUrl');
 const inputAvatarUrl = document.querySelector('#inputAvatarUrl');
 const errorAddName = document.querySelector('#errorAddName');
-// const likeCount = document.querySelector('.place-card__like-count');
 const errorAddUrl = document.querySelector('#errorAddUrl');
 const errorAvatarUrl = document.querySelector('#errorAvatarUrl');
-const urlUserInfo = 'http://95.216.175.5/cohort1/users/me';
-const urlCards = 'http://95.216.175.5/cohort1/cards/';
-const urlAvatar = 'http://95.216.175.5/cohort1/users/me/avatar';
-const urlLike = 'http://95.216.175.5/cohort1/cards/like/';
+const urlUserInfo = 'https://95.216.175.5/cohort1/users/me';
+const urlCards = 'https://95.216.175.5/cohort1/cards/';
+const urlAvatar = 'https://95.216.175.5/cohort1/users/me/avatar';
+const urlLike = 'https://95.216.175.5/cohort1/cards/like/';
 const token = '1df75db8-4542-4ec7-8523-5faf7d07ce84';
 const ownerId = '3e0f80c006cd28253082ed7d';
 
@@ -74,10 +73,6 @@ class Card {
     remove(element) {
         
         element.addEventListener('click', function (e) {
-
-            /* Надо исправить:
-             * Экземпляр класса Api можно создать один раз при инициализации скрипта, в дальнейшем точечно обращаяся к необходимым методам.
-             * */
 
             //Исправлено
 
@@ -136,11 +131,6 @@ class CardList {
 
         return this.places.insertAdjacentHTML('beforeend', html);
 
-        /* Обратить внимание:
-         * Этот пункт относится к категории необязательных.
-         *
-         * Но не кажется ли вам лишним, что мы создаем новый экземпляр cardList, чтобы отрендерить карточку?
-         * */
     }
 
 
@@ -443,7 +433,6 @@ class Api {
                     };
                 }
             })
-
             .catch((err) => {
                 console.log(err);
             });
@@ -468,11 +457,6 @@ class Api {
                 body: JSON.stringify({
                     name: `${this.name}`,
                     link: `${this.link}`
-                    //Исправлено
-                    /* Надо исправить:
-                     * this.name
-                     * this.link
-                     * */
                 })
             })
             .then(res => {
@@ -524,7 +508,6 @@ class Api {
                 .catch((err) => {
                     console.log(err);
                 });
-
         }
 
     }
@@ -724,13 +707,6 @@ document.querySelector('.popup__button').addEventListener('click', function () {
 
 formAvatar.addEventListener('submit', updateAvatar);
 
-// document.querySelector('.popup__button').addEventListener('click', function () {
-
-//     popUpIsOpendAvatar.classList.remove('popup_is-opened');
-
-// });
-
-
 formReg.addEventListener('submit', updeteProfile)
 
 document.querySelector('.popup__button').addEventListener('click', function () {
@@ -750,9 +726,7 @@ formAdd.addEventListener('input', function (e) {
         addButtonDisable();
 
     } else {
-
         addButtonEnable();
-
     }
 
 });
@@ -833,7 +807,6 @@ formAvatar.addEventListener('input', function (e) {
 
     }
 });
-
 
 
 
@@ -937,35 +910,3 @@ api.getUserDescription(urlUserInfo);
 //Загрузка первоначальных карточек с сервера
 
 api.renderFromServer(urlCards);
-
-
-/* Резюме по работе:
- * Работа - бомба, супер.
- * Вы выполнили почти всё задания, кроме like и аватара. Очень круто.
- * Что понравилось:
- *   1. Выделили class Api - корректно, круто. (Но не включили в него один из методов - не круто :( - подробнее см. комментарии в коде)
- *   2. В целом, работа с фетчем идет корректно, функционал, заявленный вами - работает
- *   3. Цепочки промисов не содержат недостежимых, ненужных кусков кода
- * В общем, сильная работа.
- *
- * А теперь о том, что нужно поправить:
- *   1. Небольшая путаница с id'шниками, которая в итоге сломала функционал удаления карточки после ее удаления - должна быть решена. (См. комментарии в коде)
- * 
- * ИСПРАВЛЕНО
- * 
- *   2. Очень много обращений к новым экземплярам Api. Надо упростить. В конструкторе идет работа только с токенами, а вызывается класс для этого - 5 раз.
- *   Можно просто объявить Api первым и сразу же сделать его экземпляр в коде. Не совсем красиво, но в противном случае необходимо будет вытаскивать все обращения к Api из методов класса в инициализацию скрипта.
- * 
- * ОСТАВИЛ ПО 1 ОБРАЩЕНИЮ
- * 
- *   3. Работа с DOM отдельной веткой от запросов к серверу. Здесь точно необходимо разобраться, все операции над дом при редактировании кода/удалении карточки/добавлении карточки происходят в цепочке промисов.
- *   Иначе у нас происходит асинхронная анархия в коде.
- *
- * 
- * ПЕРЕНЁС ОПЕРАЦИИ С DOM В PROMISE
- * 
- * 
- * Полезные ресурсы по промисам:
- * https://medium.com/web-standards/%D0%BE%D0%B1%D0%B5%D1%89%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B1%D1%83%D1%80%D0%B3%D0%B5%D1%80%D0%BD%D0%BE%D0%B9-%D0%B2%D0%B5%D1%87%D0%B5%D1%80%D0%B8%D0%BD%D0%BA%D0%B8-b0ed209809ab
- *
- * */
