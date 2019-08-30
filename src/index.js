@@ -1,3 +1,4 @@
+import './pages/style.css';
 import Card from './blocks/js/card.js';
 import Popup from './blocks/js/popUp.js';
 import Api from './blocks/js/api.js';
@@ -20,7 +21,6 @@ const buttonAdd = popUpIsOpend.querySelector('.popup__button');
 const buttonEdit = popUpIsOpendEdit.querySelector('.popup__button');
 const buttonAvatar = popUpIsOpendAvatar.querySelector('.popup__button');
 const popupForm = document.querySelector('.popup-form');
-// const temp = document.createElement('div');
 const errorName = document.querySelector('#errorName');
 const errorJob = document.querySelector('#errorJob');
 const formRegName = document.querySelector('#formRegName');
@@ -35,14 +35,6 @@ const urlUserInfo = 'http://95.216.175.5/cohort1/users/me';
 const urlAvatar = 'http://95.216.175.5/cohort1/users/me/avatar';
 const token = '1df75db8-4542-4ec7-8523-5faf7d07ce84';
 const urlCards = 'http://95.216.175.5/cohort1/cards/';
-
-
-
-
-
-
-
-
 
 function popUp() {
 

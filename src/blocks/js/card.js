@@ -23,8 +23,7 @@ export default class Card {
 
     like(element) {
 
-
-        this.element = element;
+            this.element = element;
 
         this.element.addEventListener('click', function (e) {
 
