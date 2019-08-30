@@ -5,7 +5,8 @@
   "main": "script.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development --open --watch"
+    "dev": "webpack-dev-server --mode development --open --watch",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/VBulanyi/mesto/issues"
   },
-  "homepage": "https://github.com/VBulanyi/mesto#readme",
+  "homepage": "https://vbulanyi.github.io/mesto/",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -26,6 +27,7 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
     "path": "^0.12.7",
+    "gh-pages": "~2.0.1",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
