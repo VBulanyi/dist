@@ -6,7 +6,7 @@ module.exports = {
     entry: { main: './src/index.js' },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'main.js'
     },
 
     module: {
@@ -19,10 +19,6 @@ module.exports = {
             test: /\.(eot|ttf|woff|woff2)$/,
             loader: 'file-loader?name=./src/vendor/[name].[ext]'
             },
-            // {
-            // test: /\.css$/, 
-            // use: [MiniCssExtractPlugin.loader, 'css-loader']
-            // },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
@@ -53,26 +49,3 @@ plugins: [
     })
 ]
 };
-
-
-// plugins: [
-//     new MiniCssExtractPlugin({filename: 'style.css'}),
-//     new HtmlWebpackPlugin({ 
-//         inject: false,
-//         hash: true,
-//         template: './src/index.html',
-//         filename: 'index.html'
-//     })
-// ]
-// };
-
-
-
-
-
-
-
-
-
-
-

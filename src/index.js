@@ -35,6 +35,9 @@ const urlAvatar = 'https://praktikum.tk/cohort1/users/me/avatar';
 const token = '1df75db8-4542-4ec7-8523-5faf7d07ce84';
 const urlCards = 'https://praktikum.tk/cohort1/cards/';
 
+
+
+
 function popUp() {
 
     popUpIsOpend.classList.toggle('popup_is-opened');
