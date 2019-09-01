@@ -15,7 +15,6 @@ const formAvatarClose = document.querySelector('#formAvatarClose');
 const formAdd = document.forms.new;
 const formReg = document.forms.profile;
 const formAvatar = document.forms.avatar;
-// const popup = document.querySelector('.popup');
 const root = document.querySelector('.root');
 const buttonAdd = popUpIsOpend.querySelector('.popup__button');
 const buttonEdit = popUpIsOpendEdit.querySelector('.popup__button');

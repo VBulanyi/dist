@@ -26,14 +26,23 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
-              },
-            // {test: /\.html$/, use: 'html-loader'},
+            },
             {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
+                test: /\.(png|jpg|gif|ico|svg)$/,
+                use: [
+                        'file-loader?name=../images/[name].[ext]', 
+                        {
+                                loader: 'image-webpack-loader',
+                                options: {bypassOnDebug: true,
+                                disable: true}
+                        },
+                ],
             }
+
         ]
-},
+    },
+           
+
 plugins: [
     new MiniCssExtractPlugin({filename: 'style.css'}),
     new HtmlWebpackPlugin({ 
@@ -44,3 +53,26 @@ plugins: [
     })
 ]
 };
+
+
+// plugins: [
+//     new MiniCssExtractPlugin({filename: 'style.css'}),
+//     new HtmlWebpackPlugin({ 
+//         inject: false,
+//         hash: true,
+//         template: './src/index.html',
+//         filename: 'index.html'
+//     })
+// ]
+// };
+
+
+
+
+
+
+
+
+
+
+
