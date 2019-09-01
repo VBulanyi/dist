@@ -1,6 +1,6 @@
 const token = '1df75db8-4542-4ec7-8523-5faf7d07ce84';
-const urlLike = 'http://95.216.175.5/cohort1/cards/like/';
-const urlCards = 'http://95.216.175.5/cohort1/cards/';
+const urlLike = 'https://praktikum.tk/cohort1/cards/like/';
+const urlCards = 'https://praktikum.tk/cohort1/cards/';
 
 import Api from './api.js';
 
@@ -23,8 +23,7 @@ export default class Card {
 
     like(element) {
 
-
-        this.element = element;
+            this.element = element;
 
         this.element.addEventListener('click', function (e) {
 
