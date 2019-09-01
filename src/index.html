@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/style.css">
 </head>
 
 <body>
     <div class="root">
         <header class="header root__section">
             <img src="<%=require('./images/logo.svg')%>" alt="mesto logo" class="logo">
+
         </header>
         <div class="profile root__section">
             <div class="user-info">
@@ -42,19 +42,17 @@
     </div> -->
 
         </div>
-
-
         <div class="insert-fragment"></div>
         <!-- Шаблон разметки попака картинки  -->
         <!-- <div class="popup popup_is-opened">
     <div class="popup__content place-card__popup" style="background-image: url(https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg)">
-        <img src="./images/close.svg" alt="" class="popup__close">
+        <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close">
     </div>
 </div> -->
         <div class="popup-form">
             <div class="popup popupAdd">
                 <div class="popup__content">
-                    <img id="formAddClose" src="./images/close.svg" alt="" class="popup__close">
+                    <img id="formAddClose" src="<%=require('./images/close.svg')%>" alt="" class="popup__close">
                     <h3 class="popup__title">Новое место</h3>
                     <form id="formAdd" class="popup__form" name="new">
                         <input required id="formAddName" type="text" maxlength="30" name="name"
@@ -72,7 +70,7 @@
 
             <div class="popup popupEdit">
                 <div class="popup__content">
-                    <img id="formRegClose" src="./images/close.svg" alt="" class="popup__close">
+                    <img id="formRegClose" src="<%=require('./images/close.svg')%>" alt="" class="popup__close">
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <form novalidate id="formReg" class="popup__form" name="profile">
                         <input id="formRegName" type="text" required maxlength="30" name="name"
@@ -88,7 +86,7 @@
 
             <div class="popup popupAvatar">
                 <div class="popup__content">
-                  <img id="formAvatarClose" src="./images/close.svg" alt="" class="popup__close">
+                  <img id="formAvatarClose" src="<%=require('./images/close.svg')%>" alt="" class="popup__close">
                   <h3 class="popup__title">Обновить аватар</h3>
                   <form id="avatarUrl" class="popup__form" name="avatar">
                     <input id="inputAvatarUrl" required type="url" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку">

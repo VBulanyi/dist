@@ -20,7 +20,7 @@ export default class Popup {
 
                 return popuppPicture.insertAdjacentHTML('afterbegin', `<div class="popup popup_is-opened popup-picture">
                 <div class="popup__content place-card__popup" style="background-image: url(${getPopupImageLink})">
-                <img src="./images/close.svg" alt="" class="popup__close">
+                <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close">
                 </div>
             </div>`);
             }

@@ -6,7 +6,7 @@ module.exports = {
     entry: { main: './src/index.js' },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
+        filename: 'bundle.js'
     },
 
     module: {
@@ -17,7 +17,7 @@ module.exports = {
             },
             {
             test: /\.(eot|ttf|woff|woff2)$/,
-            loader: 'file-loader?name=./vendor/[name].[ext]'
+            loader: 'file-loader?name=./src/vendor/[name].[ext]'
             },
             // {
             // test: /\.css$/, 
@@ -30,7 +30,7 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif|ico|svg)$/,
                 use: [
-                        'file-loader?name=../images/[name].[ext]', 
+                        'file-loader?name=./src/images/[name].[ext]', 
                         {
                                 loader: 'image-webpack-loader',
                                 options: {bypassOnDebug: true,
@@ -48,8 +48,8 @@ plugins: [
     new HtmlWebpackPlugin({ 
         inject: false,
         hash: true,
-        template: './src/template/index.html',
-        filename: './src/index.html'
+        template: './src/index.html',
+        filename: 'index.html'
     })
 ]
 };
