@@ -19,9 +19,18 @@ module.exports = {
             test: /\.(eot|ttf|woff|woff2)$/,
             loader: 'file-loader?name=./vendor/[name].[ext]'
             },
+            // {
+            // test: /\.css$/, 
+            // use: [MiniCssExtractPlugin.loader, 'css-loader']
+            // },
             {
-            test: /\.css$/, 
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+              },
+            // {test: /\.html$/, use: 'html-loader'},
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
             }
         ]
 },
