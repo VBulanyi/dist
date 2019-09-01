@@ -31,10 +31,10 @@ const inputAvatarUrl = document.querySelector('#inputAvatarUrl');
 const errorAddName = document.querySelector('#errorAddName');
 const errorAddUrl = document.querySelector('#errorAddUrl');
 const errorAvatarUrl = document.querySelector('#errorAvatarUrl');
-const urlUserInfo = 'https://95.216.175.5/cohort1/users/me';
-const urlAvatar = 'https://95.216.175.5/cohort1/users/me/avatar';
+const urlUserInfo = 'https://praktikum.tk/cohort1/users/me';
+const urlAvatar = 'https://praktikum.tk/cohort1/users/me/avatar';
 const token = '1df75db8-4542-4ec7-8523-5faf7d07ce84';
-const urlCards = 'https://95.216.175.5/cohort1/cards/';
+const urlCards = 'https://praktikum.tk/cohort1/cards/';
 
 function popUp() {
 
