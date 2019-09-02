@@ -1,8 +1,7 @@
 import './pages/style.css';
 import Card from './blocks/js/card.js';
-import Popup from './blocks/js/popUp.js';
 import Api from './blocks/js/api.js';
-
+import Popup from './blocks/js/popUp.js';
 
 const popuppPicture = document.querySelector('.insert-fragment');
 const popUpIsOpend = document.querySelector('.popupAdd');
