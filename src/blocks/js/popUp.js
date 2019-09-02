@@ -2,13 +2,9 @@ const popuppPicture = document.querySelector('.insert-fragment');
 
 export default class Popup {
 
-    
-
-    constructor(element) {
+       constructor(element) {
 
         this.element = element;
-
-
     }
 
     open() {
