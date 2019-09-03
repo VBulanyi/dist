@@ -2,12 +2,17 @@ import './pages/style.css';
 import Card from './blocks/js/card.js';
 import Api from './blocks/js/api.js';
 import Popup from './blocks/js/popUp.js';
-
+import {popUpForm, addButtonDisable, regButtonDisable, avatarButtonDisable, popUpIsOpend, popUpIsOpendEdit}  from './blocks/js/popUpForm';
+import formClose from './blocks/js/formClose';
+import {popUpEdit, popUpAvatar} from './blocks/js/formPopUpToggle';
+import avatarFormValidation from './blocks/js/avatarFormValidation';
+import avatarValidationButton from './blocks/js/avatarValidationButton';
+import {regFormNameValidation, regFormJobValidation} from './blocks/js/regFormValidation';
+import regValidationButton from './blocks/js/regValidationButton';
+import {addFormNameValidation, addFormUrlValidation} from './blocks/js/addFormValidation';
+import {addValidationButton} from './blocks/js/addValidationButton';
 const popuppPicture = document.querySelector('.insert-fragment');
-const popUpIsOpend = document.querySelector('.popupAdd');
 const places = document.querySelector('.places-list');
-const popUpIsOpendEdit = document.querySelector('.popupEdit');
-const popUpIsOpendAvatar = document.querySelector('.popupAvatar');
 const addCloseButton = document.querySelector('#formAddClose');
 const regCloseButton = document.querySelector('#formRegClose');
 const formAvatarClose = document.querySelector('#formAvatarClose');
@@ -15,44 +20,18 @@ const formAdd = document.forms.new;
 const formReg = document.forms.profile;
 const formAvatar = document.forms.avatar;
 const root = document.querySelector('.root');
-const buttonAdd = popUpIsOpend.querySelector('.popup__button');
-const buttonEdit = popUpIsOpendEdit.querySelector('.popup__button');
-const buttonAvatar = popUpIsOpendAvatar.querySelector('.popup__button');
 const popupForm = document.querySelector('.popup-form');
-const errorName = document.querySelector('#errorName');
-const errorJob = document.querySelector('#errorJob');
 const formRegName = document.querySelector('#formRegName');
 const formRegJob = document.querySelector('#formRegJob');
 const formAddName = document.querySelector('#formAddName');
 const formAddUrl = document.querySelector('#formAddUrl');
 const inputAvatarUrl = document.querySelector('#inputAvatarUrl');
-const errorAddName = document.querySelector('#errorAddName');
-const errorAddUrl = document.querySelector('#errorAddUrl');
-const errorAvatarUrl = document.querySelector('#errorAvatarUrl');
 const urlUserInfo = 'https://praktikum.tk/cohort1/users/me';
 const urlAvatar = 'https://praktikum.tk/cohort1/users/me/avatar';
 const token = '1df75db8-4542-4ec7-8523-5faf7d07ce84';
 const urlCards = 'https://praktikum.tk/cohort1/cards/';
 
-
-
-
-function popUp() {
-
-    popUpIsOpend.classList.toggle('popup_is-opened');
-}
-
-
-function popUpEdit() {
-
-    popUpIsOpendEdit.classList.toggle('popup_is-opened');
-}
-
-function popUpAvatar() {
-
-    popUpIsOpendAvatar.classList.toggle('popup_is-opened');
-}
-
+export {formAvatar, formReg, formAdd, isValidUrl, isEmptyOrSpaces, formRegName, formRegJob, formAddName, formAddUrl};
 
 function addCard(e) {
 
@@ -78,7 +57,7 @@ function updateAvatar(e) {
 
     e.preventDefault();
 
-    popUpAvatar()
+    popUpAvatar(); 
 
     form.reset();
 
@@ -112,50 +91,6 @@ function isValidUrl(url) {
 }
 
 
-function addButtonDisable() {
-
-    buttonAdd.setAttribute('disabled', true);
-
-    buttonAdd.classList.remove('popup__button_enebled');
-}
-
-function addButtonEnable() {
-
-    buttonAdd.removeAttribute('disabled');
-
-    buttonAdd.classList.add('popup__button_enebled');
-}
-
-function regButtonDisable() {
-
-    buttonEdit.setAttribute('disabled', true);
-
-    buttonEdit.classList.remove('popup__button_enebled');
-}
-
-function regButtonEnable() {
-
-    buttonEdit.removeAttribute('disabled');
-
-    buttonEdit.classList.add('popup__button_enebled');
-
-}
-
-function avatarButtonDisable() {
-
-    buttonAvatar.setAttribute('disabled', true);
-
-    buttonAvatar.classList.remove('popup__button_enebled');
-}
-
-function avatarButtonEnable() {
-
-    buttonAvatar.removeAttribute('disabled');
-
-    buttonAvatar.classList.add('popup__button_enebled');
-
-}
-
 // Закрытие попапа с картинкой
 
 
@@ -170,26 +105,8 @@ popuppPicClose.close();
 
 root.addEventListener('click', function (e) {
 
-// Вынести обязательно в отдельную функцию
+    popUpForm (e)
 
-    if (e.target.classList.contains('user-info__button')) {
-
-        popUp();
-
-
-    } else if (e.target.classList.contains('user-info__edit-button')) {
-
-        popUpEdit();
-
-        formRegName.value = document.querySelector('.user-info__name').textContent;
-
-        formRegJob.value = document.querySelector('.user-info__job').textContent;
-
-        ;
-    } else if (e.target.classList.contains('user-info__photo')) {
-
-        popUpAvatar();
-    }
 });
 
 
@@ -197,14 +114,9 @@ root.addEventListener('click', function (e) {
 
 popupForm.addEventListener('click', function (e) {
 
-// Вынести обязательно в отдельную функцию
-    if (e.target.classList.contains('popup__close')) {
+   formClose(e);
 
-        e.target.closest('.popup').classList.toggle('popup_is-opened');
-    }
 });
-
-
 
 
 //  Добавление карточки
@@ -213,9 +125,7 @@ formAdd.addEventListener('submit', addCard);
 
 document.querySelector('.popup__button').addEventListener('click', function () {
 
-// Вынести обязательно в отдельную функцию
     popUpIsOpend.classList.remove('popup_is-opened');
-
 
 });
 
@@ -224,7 +134,6 @@ document.querySelector('.popup__button').addEventListener('click', function () {
 
 formAvatar.addEventListener('submit', updateAvatar);
 
-// Вынести обязательно в отдельную функцию
 formReg.addEventListener('submit', updeteProfile)
 
 document.querySelector('.popup__button').addEventListener('click', function () {
@@ -234,62 +143,47 @@ document.querySelector('.popup__button').addEventListener('click', function () {
 });
 
 
-formAdd.addEventListener('input', function (e) {
+formAdd.addEventListener('input', function () {
 
-// Вынести обязательно в отдельную функцию
-    if (!formAdd.checkValidity() || isEmptyOrSpaces(formAddName.value)) {
-
-        addButtonDisable();
-    } else if (!isValidUrl(formAddUrl.value)) {
-
-        addButtonDisable();
-
-    } else {
-        addButtonEnable();
-    }
-
+    addValidationButton ()
+    
 });
 
 
-formReg.addEventListener('submit', function (e) {
+formReg.addEventListener('submit', function () {
 
-// Вынести обязательно в отдельную функцию
     formReg.reset();
 
     regButtonDisable();
 
 });
 
-formAdd.addEventListener('submit', function (e) {
+formAdd.addEventListener('submit', function () {
 
-// Вынести обязательно в отдельную функцию
     formAdd.reset();
 
     addButtonDisable()
 
 });
 
-formAvatar.addEventListener('submit', function (e) {
+formAvatar.addEventListener('submit', function () {
 
-// Вынести обязательно в отдельную функцию
     formAvatar.reset();
 
     avatarButtonDisable()
 
 });
 
-formAvatarClose.addEventListener('click', function (e) {
+formAvatarClose.addEventListener('click', function () {
 
-// Вынести обязательно в отдельную функцию
     formAvatar.reset();
 
     avatarButtonDisable();
 
 });
 
-regCloseButton.addEventListener('click', function (e) {
+regCloseButton.addEventListener('click', function () {
 
-// Вынести обязательно в отдельную функцию
     formReg.reset();
 
     regButtonDisable();
@@ -297,132 +191,58 @@ regCloseButton.addEventListener('click', function (e) {
 });
 
 
-addCloseButton.addEventListener('click', function (e) {
+addCloseButton.addEventListener('click', function () {
 
-// Вынести обязательно в отдельную функцию
     formAdd.reset();
 
-    addButtonDisable()
+    addButtonDisable();
 
 });
 
-formReg.addEventListener('input', function (e) {
+formReg.addEventListener('input', function () {
 
-// Вынести обязательно в отдельную функцию
-    if (!formReg.checkValidity() || isEmptyOrSpaces(formRegName.value) || isEmptyOrSpaces(formRegJob.value)) {
-
-        regButtonDisable();
-
-    } else {
-
-        regButtonEnable();
-
-    }
+    regValidationButton ()
+    
 });
 
 
-formAvatar.addEventListener('input', function (e) {
+formAvatar.addEventListener('input', function () {
 
-// Вынести обязательно в отдельную функцию
-    if (!formAvatar.checkValidity() || isEmptyOrSpaces(inputAvatarUrl.value)) {
 
-        avatarButtonDisable();
-
-    } else {
-
-        avatarButtonEnable();
-
-    }
+    avatarValidationButton();
 });
 
 
 
-formRegName.addEventListener('input', function (e) {
+formRegName.addEventListener('input', function () {
 
-// Вынести обязательно в отдельную функцию
-    if (formRegName.validity.valid) {
-
-        errorName.textContent = "";
-
-    } else if (formRegName.validity.valueMissing) {
-
-        errorName.textContent = "Это обязательное поле";
-
-    } else(errorName.textContent = "Должно быть от 2 до 30 символов");
+    regFormNameValidation () 
+    
 });
 
-formRegJob.addEventListener('input', function (e) {
+formRegJob.addEventListener('input', function () {
 
-// Вынести обязательно в отдельную функцию
-    if (formRegJob.validity.valid && !isEmptyOrSpaces(formRegJob.value)) {
+    regFormJobValidation ()
+    
+});
 
-        errorJob.textContent = "";
+formAddName.addEventListener('input', function () {
 
-        e.preventDefault();
+    addFormNameValidation ()
+   
+});
 
-    } else if (formRegJob.validity.valueMissing || isEmptyOrSpaces(formRegJob.value)) {
+formAddUrl.addEventListener('input', function () {
 
-        errorJob.textContent = "Это обязательное поле";
-
-    } else(errorJob.textContent = "Должно быть от 2 до 30 символов");
+    addFormUrlValidation () 
+    
 });
 
 
-formRegName.addEventListener('input', function (e) {
+inputAvatarUrl.addEventListener('input', function () {
 
-// Вынести обязательно в отдельную функцию
-    if (formRegName.validity.valid && !isEmptyOrSpaces(formRegName.value)) {
+avatarFormValidation();
 
-        errorName.textContent = "";
-
-
-    } else if (formRegName.validity.valueMissing || isEmptyOrSpaces(formRegName.value)) {
-
-        errorName.textContent = "Это обязательное поле";
-
-    } else(errorName.textContent = "Должно быть от 2 до 30 символов");
-});
-
-formAddName.addEventListener('input', function (e) {
-
-// Вынести обязательно в отдельную функцию
-    if (formAddName.validity.valid && !isEmptyOrSpaces(formAddName.value)) {
-
-        errorAddName.textContent = "";
-
-    } else if (formAddName.validity.valueMissing || isEmptyOrSpaces(formAddName.value)) {
-
-        errorAddName.textContent = "Это обязательное поле";
-
-    } else(errorAddName.textContent = "Должно быть от 2 до 30 символов");
-});
-
-formAddUrl.addEventListener('input', function (e) {
-
-// Вынести обязательно в отдельную функцию
-    if (formAddUrl.validity.valid && isValidUrl(formAddUrl.value)) {
-
-        errorAddUrl.textContent = "";
-
-    } else if (formAddUrl.validity.valueMissing) {
-
-        errorAddUrl.textContent = "Это обязательное поле";
-
-    } else(errorAddUrl.textContent = "Здесь должна быть ссылка");
-});
-
-
-inputAvatarUrl.addEventListener('input', function (e) {
-// Вынести обязательно в отдельную функцию
-    if (inputAvatarUrl.validity.valid && isValidUrl(inputAvatarUrl.value)) {
-
-        errorAvatarUrl.textContent = "";
-
-    } else if (inputAvatarUrl.validity.valueMissing) {
-
-        errorAvatarUrl.textContent = "Это обязательное поле";
-
-    } else(errorAvatarUrl.textContent = "Здесь должна быть ссылка");
 });
 
 // Удаление карточки // Лайк
