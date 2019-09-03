@@ -5,9 +5,9 @@ const urlCards = 'https://praktikum.tk/cohort1/cards/';
 import Api from './api.js';
 
 const apia = new Api(token);
-// За что отвечает класс
+// Создание, удаление карточки и лайк карточки
 export default class Card {
-    // за что отвечают эти переменные ??
+    // name - имя карточки, link - ссылка на картинку, id - id н сервере, likeCount - количество лайков карточки на сервере
     constructor(name, link, id, likeCount) {
 
         this.name = name;
@@ -26,7 +26,7 @@ export default class Card {
             this.element = element;
 
         this.element.addEventListener('click', function (e) {
-            // в отдельный метод
+           
             const id = e.target.closest('.place-card').id;
 
             const tag = e.target.classList;
@@ -44,8 +44,6 @@ export default class Card {
         
         element.addEventListener('click', function (e) {
 
-            //Исправлено
-
             if (e.target.classList.contains('place-card__delete-icon')) {
 
                 apia.deleteCardFromServer(urlCards, e.target.closest('.place-card').id, element, e)
@@ -56,7 +54,7 @@ export default class Card {
     }
 
     create() {
-        // В создании находится шаблон, это не правильно.
+   
         return `
         <div class="place-card" id="${this.id}">
             <div class="place-card__image" style="background-image: url(${this.link})">
