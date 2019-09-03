@@ -170,6 +170,7 @@ popuppPicClose.close();
 
 root.addEventListener('click', function (e) {
 
+// Вынести обязательно в отдельную функцию
 
     if (e.target.classList.contains('user-info__button')) {
 
@@ -196,6 +197,7 @@ root.addEventListener('click', function (e) {
 
 popupForm.addEventListener('click', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (e.target.classList.contains('popup__close')) {
 
         e.target.closest('.popup').classList.toggle('popup_is-opened');
@@ -211,6 +213,7 @@ formAdd.addEventListener('submit', addCard);
 
 document.querySelector('.popup__button').addEventListener('click', function () {
 
+// Вынести обязательно в отдельную функцию
     popUpIsOpend.classList.remove('popup_is-opened');
 
 
@@ -221,6 +224,7 @@ document.querySelector('.popup__button').addEventListener('click', function () {
 
 formAvatar.addEventListener('submit', updateAvatar);
 
+// Вынести обязательно в отдельную функцию
 formReg.addEventListener('submit', updeteProfile)
 
 document.querySelector('.popup__button').addEventListener('click', function () {
@@ -232,6 +236,7 @@ document.querySelector('.popup__button').addEventListener('click', function () {
 
 formAdd.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (!formAdd.checkValidity() || isEmptyOrSpaces(formAddName.value)) {
 
         addButtonDisable();
@@ -248,6 +253,7 @@ formAdd.addEventListener('input', function (e) {
 
 formReg.addEventListener('submit', function (e) {
 
+// Вынести обязательно в отдельную функцию
     formReg.reset();
 
     regButtonDisable();
@@ -256,6 +262,7 @@ formReg.addEventListener('submit', function (e) {
 
 formAdd.addEventListener('submit', function (e) {
 
+// Вынести обязательно в отдельную функцию
     formAdd.reset();
 
     addButtonDisable()
@@ -264,6 +271,7 @@ formAdd.addEventListener('submit', function (e) {
 
 formAvatar.addEventListener('submit', function (e) {
 
+// Вынести обязательно в отдельную функцию
     formAvatar.reset();
 
     avatarButtonDisable()
@@ -272,6 +280,7 @@ formAvatar.addEventListener('submit', function (e) {
 
 formAvatarClose.addEventListener('click', function (e) {
 
+// Вынести обязательно в отдельную функцию
     formAvatar.reset();
 
     avatarButtonDisable();
@@ -280,6 +289,7 @@ formAvatarClose.addEventListener('click', function (e) {
 
 regCloseButton.addEventListener('click', function (e) {
 
+// Вынести обязательно в отдельную функцию
     formReg.reset();
 
     regButtonDisable();
@@ -289,6 +299,7 @@ regCloseButton.addEventListener('click', function (e) {
 
 addCloseButton.addEventListener('click', function (e) {
 
+// Вынести обязательно в отдельную функцию
     formAdd.reset();
 
     addButtonDisable()
@@ -297,6 +308,7 @@ addCloseButton.addEventListener('click', function (e) {
 
 formReg.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (!formReg.checkValidity() || isEmptyOrSpaces(formRegName.value) || isEmptyOrSpaces(formRegJob.value)) {
 
         regButtonDisable();
@@ -311,6 +323,7 @@ formReg.addEventListener('input', function (e) {
 
 formAvatar.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (!formAvatar.checkValidity() || isEmptyOrSpaces(inputAvatarUrl.value)) {
 
         avatarButtonDisable();
@@ -326,6 +339,7 @@ formAvatar.addEventListener('input', function (e) {
 
 formRegName.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (formRegName.validity.valid) {
 
         errorName.textContent = "";
@@ -339,6 +353,7 @@ formRegName.addEventListener('input', function (e) {
 
 formRegJob.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (formRegJob.validity.valid && !isEmptyOrSpaces(formRegJob.value)) {
 
         errorJob.textContent = "";
@@ -355,6 +370,7 @@ formRegJob.addEventListener('input', function (e) {
 
 formRegName.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (formRegName.validity.valid && !isEmptyOrSpaces(formRegName.value)) {
 
         errorName.textContent = "";
@@ -369,6 +385,7 @@ formRegName.addEventListener('input', function (e) {
 
 formAddName.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (formAddName.validity.valid && !isEmptyOrSpaces(formAddName.value)) {
 
         errorAddName.textContent = "";
@@ -382,6 +399,7 @@ formAddName.addEventListener('input', function (e) {
 
 formAddUrl.addEventListener('input', function (e) {
 
+// Вынести обязательно в отдельную функцию
     if (formAddUrl.validity.valid && isValidUrl(formAddUrl.value)) {
 
         errorAddUrl.textContent = "";
@@ -395,7 +413,7 @@ formAddUrl.addEventListener('input', function (e) {
 
 
 inputAvatarUrl.addEventListener('input', function (e) {
-
+// Вынести обязательно в отдельную функцию
     if (inputAvatarUrl.validity.valid && isValidUrl(inputAvatarUrl.value)) {
 
         errorAvatarUrl.textContent = "";
@@ -424,3 +442,30 @@ api.getUserDescription(urlUserInfo);
 //Загрузка первоначальных карточек с сервера
 
 api.renderFromServer(urlCards);
+
+
+/**
+ * 
+ * Вы первый студент который правильно использовал гит, создавай различные ветки 
+ * Гит очень сильный инструмент в умелых руках. Больше почитать об использовании веток межете здесь https://habr.com/ru/post/106912/
+ * 
+ * Все функции которые находятся в этом файле должны вынесены в классы и общаться они должны между собой только внутри класса 
+ * Надо будет переделать правильно
+ * Если класс убас достаточно большой, значит вы делаете что-то не так. Не делайте из файла или класса божественный объект в котором всё
+ * https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82
+ * 
+ * README.md должно быть рассписано как запустить проект, пошагово, что из себя представляет проект.
+ * Представьте что вы отдедите свой проект своему другу через 5 лет и вы двлжны рассказать что и за чем он, какую несёт цель и так далее
+ * 
+ * Когда будете переписывать обратите внимание чтобы методы не дублировались а были по смыслу более приближённые и их можно было переиспользовать
+ * 
+ * Так же комментарии, 7 правил коммитов:
+- Отделяйте заголовок от тела пустой строкой
+- Ограничивайте заголовок 50 символами
+- Пишите заголовок с заглавной буквы
+- Не ставьте точку в конце заголовка
+- Используйте повелительное наклонение в заголовке
+- Переходите на следующую строку в теле на 72 символах
+- В теле отвечайте на вопросы что и почему, а не как
+ * 
+ */

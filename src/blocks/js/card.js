@@ -5,9 +5,9 @@ const urlCards = 'https://praktikum.tk/cohort1/cards/';
 import Api from './api.js';
 
 const apia = new Api(token);
-
+// За что отвечает класс
 export default class Card {
-
+    // за что отвечают эти переменные ??
     constructor(name, link, id, likeCount) {
 
         this.name = name;
@@ -26,7 +26,7 @@ export default class Card {
             this.element = element;
 
         this.element.addEventListener('click', function (e) {
-
+            // в отдельный метод
             const id = e.target.closest('.place-card').id;
 
             const tag = e.target.classList;
@@ -56,7 +56,7 @@ export default class Card {
     }
 
     create() {
-
+        // В создании находится шаблон, это не правильно.
         return `
         <div class="place-card" id="${this.id}">
             <div class="place-card__image" style="background-image: url(${this.link})">
