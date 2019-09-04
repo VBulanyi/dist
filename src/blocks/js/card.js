@@ -25,7 +25,7 @@ export default class Card {
 
             this.element = element;
 
-        this.element.addEventListener('click', function (e) {
+            this.element.addEventListener('click', function (e) {
            
             const id = e.target.closest('.place-card').id;
 

@@ -2,15 +2,27 @@ import {isValidUrl} from '../../index';
 const inputAvatarUrl = document.querySelector('#inputAvatarUrl');
 const errorAvatarUrl = document.querySelector('#errorAvatarUrl');
 
-export default function avatarFormValidation () {
+function clearField() {
+    errorAvatarUrl.textContent = ""
+};
+
+function mandoratyField() {
+    errorAvatarUrl.textContent = "Это обязательное поле"
+};
+
+function urlNeeded() {
+    errorAvatarUrl.textContent = "Здесь должна быть ссылка"
+};
+
+export default function avatarFormValidation() {
 
     if (inputAvatarUrl.validity.valid && isValidUrl(inputAvatarUrl.value)) {
 
-        errorAvatarUrl.textContent = "";
+        clearField();
 
     } else if (inputAvatarUrl.validity.valueMissing) {
 
-        errorAvatarUrl.textContent = "Это обязательное поле";
+        mandoratyField();
 
-    } else(errorAvatarUrl.textContent = "Здесь должна быть ссылка");
+    } else(urlNeeded());
 }
