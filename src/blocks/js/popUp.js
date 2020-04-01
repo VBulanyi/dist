@@ -15,7 +15,7 @@ export default class Popup {
                 const getPopupImageLink = e.target.attributes.style.value.slice(22, -1);
                 return popuppPicture.insertAdjacentHTML('afterbegin', `<div class="popup popup_is-opened popup-picture">
                 <div class="popup__content place-card__popup" style="background-image: url(${getPopupImageLink})">
-                <img src="src/images/close.svg" alt="" class="popup__close">
+                <img src="./images/close.svg" alt="" class="popup__close">
                 </div>
             </div>`);
             }
