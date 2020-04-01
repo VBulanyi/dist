@@ -20,3 +20,9 @@
   justify-content: center;
   display: none;
 }
+
+@media screen and (max-width: 450px) {
+  .popup {
+    width: calc(100% - 24px);
+  }
+}

@@ -4,7 +4,7 @@
 #
 # URL
 #
-# https://vbulanyi.github.io/dist/
+# https://vbulanyi.github.io/mesto/
 # 
 # Цель проекта
 #
