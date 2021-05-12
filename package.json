@@ -43,7 +43,7 @@
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "core-js": "3.1.4",
-    "swiper": "5.2.1",
+    "swiper": "6.5.1",
     "validator": "11.1.0",
     "autoprefixer": "9.7.3",
     "cssnano": "4.1.10"
